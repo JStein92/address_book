@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <h1>My Contacts</h1>
+  @if(Model == null)
+  {
+    <h2> You currently have no contacts</h2>
+  }
+  @if(Model!=null)
+  {
+    @foreach(var contact in Model)
+    {
+      <div class = "panel panel-primary">
+        <div class = "panel-heading"><h2>Hello, my name is: @contact.GetName()</h2></div>
+          <div class = "panel-body">
+                <h4>Phone: @contact.GetPhone()</h4>
+            <div class = "well">
+              <h4>@contact.GetAddress().GetStreet()</h4>
+              <h4>@contact.GetAddress().GetCity(), @contact.GetAddress().GetState()</h4>
+            </div>
+            <p>Other notes: @contact.GetNotes()</p>
+
+        </div>
+      </div>
+    }
+  }
+  <a href="/ContactForm">Create a new contact!</a>
+  </div>
