@@ -13,11 +13,18 @@ namespace AddressBook.Controllers
       return View(Contact.GetAll());
     }
 
-    [HttpPost("/")]
-    public ActionResult IndexClearAll()
+    [HttpPost("/clear/{id}")]
+    public ActionResult Index(int id)
+    {
+      Contact.ClearContact(id);
+      return View(Contact.GetAll());
+    }
+
+    [HttpPost("/contacts/clear")]
+    public ActionResult ClearConfirmation()
     {
       Contact.ClearAll();
-      return View("Index", Contact.GetAll());
+      return View();
     }
 
     [HttpPost("/index")]

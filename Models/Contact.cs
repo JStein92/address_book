@@ -37,7 +37,7 @@ namespace AddressBook.Models
     }
     public string GetNotes()
     {
-      return _name;
+      return _notes;
     }
     public Address GetAddress()
     {
@@ -66,9 +66,17 @@ namespace AddressBook.Models
     {
       _allContacts.Clear();
     }
-    public static Contact Find(int searchId)
+    public static void ClearContact(int id)
     {
 
+      Console.WriteLine("Removing: " + _allContacts[id-1].GetName() );
+      _allContacts.Remove(_allContacts[id-1]);
+
+
+
+    }
+    public static Contact Find(int searchId)
+    {
       return _allContacts[searchId - 1];
     }
 
