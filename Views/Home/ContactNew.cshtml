@@ -6,22 +6,17 @@
 <h1>You created a new contact! <small><a href="/">View all contacts</a></small></h1>
 </div>
 <div class="container">
-
   <div class = "panel panel-info">
     <div class = "panel-heading"><h2><a href = "/ContactDetails/@Model.GetId()"> @Model.GetName()</a></h2> </div>
       <div class = "panel-body">
-
-        <div class = "well">
-          <em><h3>Address</h3></em>
-          <h4>@Model.GetAddress().GetStreet()</h4>
-          <h4>@Model.GetAddress().GetCity() @Model.GetAddress().GetState()</h4>
-          <em><h3>Phone</h3></em>
-          <h4>@Model.GetPhone()</h4>
-        </div>
-          <small class="text-muted">@Model.GetNotes()</small>
-    
-
+          <div class = "well">
+            <em><h3>Address</h3></em>
+            <h4>@Model.GetAddress().GetStreet()</h4>
+            <h4>@Model.GetAddress().GetCity() @Model.GetAddress().GetState()</h4>
+            <em><h3>Phone</h3></em>
+            <h4>@Model.GetPhone()</h4>
+          </div>
+        <small class="text-muted">@Model.GetNotes()</small>
     </div>
   </div>
-
 </div>

@@ -40,7 +40,7 @@ namespace AddressBook.Controllers
       Address editedAddress = new Address(street,city,state);
       Contact editedContact = new Contact(name,phone,editedAddress,false,notes);
 
-      Console.WriteLine("Contact trying to edit is: " + name + " at position " + Request.Form["Id"]);
+      Console.WriteLine("Contact to edit is: " + name + " at position " + Request.Form["Id"]);
 
       editedContact.SetId(Contact.Find(int.Parse(Request.Form["Id"])).GetId());
       Contact.EditContact(editedContact);
@@ -61,8 +61,6 @@ namespace AddressBook.Controllers
         Contact newContact = new Contact(name,phone,newAddress,true,notes);
         return View(newContact);
       }
-
-
 
     [HttpGet("/ContactForm")]
     public ActionResult ContactForm()
