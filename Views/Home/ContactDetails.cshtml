@@ -1,0 +1,47 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <div class="page-header">
+    <h1>Edit this contact <small><a href="/">Or go back to contact list</a></small></h1>
+  </div>
+
+  <form action="/index" method="post" class="form-horizontal">
+      <input type="hidden" name="Id" id="Id" value="@Model.GetId()">
+    <div class="form-group">
+      <label for="name">Edit contact name:</label>
+      <input type="text" name="name" id="name" value="@Model.GetName()">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Edit contact phone:</label>
+      <input type="text" name="phone" id="phone"  value="@Model.GetPhone()">
+    </div>
+
+    <div class="form-group">
+      <label for="street">Edit street:</label>
+      <input type="text" name="street" id="street"  value="@Model.GetAddress().GetStreet()">
+    </div>
+
+    <div class="form-group">
+      <label for="city">Edit city:</label>
+      <input type="text" name="city" id="city"  value="@Model.GetAddress().GetCity()">
+    </div>
+
+    <div class="form-group">
+      <label for="state">Edit state:</label>
+      <input type="text" name="state" id="state"  value="@Model.GetAddress().GetState()">
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Edit notes:</label>
+      <input type="text" name="notes" id="notes"  value="@Model.GetNotes()">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" name="button">Submit changes!</button>
+    </form>
+
+  </div>
+</div>

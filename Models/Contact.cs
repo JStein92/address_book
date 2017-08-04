@@ -1,5 +1,6 @@
 using AddressBook.Models;
 using System.Collections.Generic;
+using System;
 
 namespace AddressBook.Models
 {
@@ -12,13 +13,17 @@ namespace AddressBook.Models
     private int _id;
     private static List<Contact> _allContacts = new List<Contact>() {};
 
-    public Contact(string name, string phone, Address address, string notes = "")
+    public Contact(string name, string phone, Address address, string notes, bool newContact)
     {
       _name = name;
       _phone = phone;
       _address = address;
       _notes = notes;
-      _allContacts.Add(this);
+      if (newContact)
+      {
+        _allContacts.Add(this);
+      }
+
       _id = _allContacts.Count;
     }
 
@@ -42,12 +47,24 @@ namespace AddressBook.Models
     {
       return _id;
     }
+    public void SetId(int Id)
+    {
+      _id = Id;
+    }
+    public static void EditContact(Contact editedContact)
+    {
+        int tempId = editedContact.GetId();
+        Console.WriteLine("removing contact at " + (tempId-1));
+       _allContacts.RemoveAt(tempId-1);
+       _allContacts.Insert(tempId-1, editedContact);
+    }
     public static List<Contact> GetAll()
     {
       return _allContacts;
     }
     public static Contact Find(int searchId)
     {
+
       return _allContacts[searchId - 1];
     }
 

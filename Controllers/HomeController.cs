@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using AddressBook.Models;
 using System.Collections.Generic;
 using System;
-using System.Globalization;
 
 namespace AddressBook.Controllers
 {
@@ -14,8 +13,8 @@ namespace AddressBook.Controllers
       return View(Contact.GetAll());
     }
 
-    [HttpPost("/contact/new")]
-    public ActionResult ContactNew()
+    [HttpPost("/index")]
+    public ActionResult IndexEditContact()
     {
       string name = Request.Form["name"];
       string phone = Request.Form["phone"];
@@ -23,11 +22,33 @@ namespace AddressBook.Controllers
       string city = Request.Form["city"];
       string state = Request.Form["state"];
       string notes = Request.Form["notes"];
-      Address newAddress = new Address(street,city,state);
-      Contact newContact = new Contact(name,phone,newAddress,notes);
 
-      return View(newContact);
+      Address editedAddress = new Address(street,city,state);
+      Contact editedContact = new Contact(name,phone,editedAddress,notes,false);
+
+      Console.WriteLine("Contact trying to edit is: " + name + " at position " + Request.Form["Id"]);
+
+      editedContact.SetId(Contact.Find(int.Parse(Request.Form["Id"])).GetId());
+      Contact.EditContact(editedContact);
+      return View("index", Contact.GetAll());
     }
+
+    [HttpPost("/contact/new")]
+    public ActionResult ContactNew()
+    {
+        Console.WriteLine("New contact is created");
+        string name = Request.Form["name"];
+        string phone = Request.Form["phone"];
+        string street = Request.Form["street"];
+        string city = Request.Form["city"];
+        string state = Request.Form["state"];
+        string notes = Request.Form["notes"];
+        Address newAddress = new Address(street,city,state);
+        Contact newContact = new Contact(name,phone,newAddress,notes,true);
+        return View(newContact);
+      }
+
+
 
     [HttpGet("/ContactForm")]
     public ActionResult ContactForm()

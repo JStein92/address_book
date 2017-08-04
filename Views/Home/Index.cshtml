@@ -3,20 +3,24 @@
 }
 
 <div class="container">
+
+
   <div class="jumbotron">
       <h1>My Contacts</h1>
   </div>
 
-  @if(Model == null)
-  {
-    <h2> You currently have no contacts</h2>
-  }
+  <a href="/ContactForm" role="button" class="btn btn-success"> Create a new contact!</a>
+  <br>
+
   @if(Model!=null)
   {
     @foreach(var contact in Model)
     {
-      <div class = "panel panel-primary">
-    <div class = "panel-heading"><h2><a href = "ContactDetails/@contact.GetId()"> @contact.GetName()</a></h2>(click to edit)</div>
+      <br>
+      <div class = "panel panel-info">
+    <div class = "panel-heading"><h2> <a href = "/ContactDetails/@contact.GetId()"> @contact.GetName() </a></h2>
+
+    <a href = "/ContactDetails/@contact.GetId()"> edit </a></div>
           <div class = "panel-body">
 
             <div class = "well">
@@ -30,5 +34,4 @@
       </div>
     }
   }
-  <a href="/ContactForm">Create a new contact!</a>
   </div>
