@@ -6,7 +6,7 @@
 
 
   <div class="jumbotron">
-      <h1>My Contacts</h1>
+    <h1>My Contacts</h1>
   </div>
 
   <a href="/ContactForm" role="button" class="btn btn-success"> Create a new contact!</a>
@@ -18,21 +18,22 @@
     {
       <br>
       <div class = "panel panel-info">
-    <div class = "panel-heading"><h2> <a href = "/ContactDetails/@contact.GetId()"> @contact.GetName() </a></h2>
+      <div class = "panel-heading"><h2> <a href = "/ContactDetails/@contact.GetId()"> @contact.GetName() </a></h2>
 
-    <a href = "/ContactDetails/@contact.GetId()"> edit </a></div>
-          <div class = "panel-body">
+      <a href = "/ContactDetails/@contact.GetId()"> edit </a></div>
+      <div class = "panel-body">
 
-            <div class = "well">
-              <h4>@contact.GetAddress().GetStreet()</h4>
-              <h4>@contact.GetAddress().GetCity(), @contact.GetAddress().GetState()</h4>
-              <h4>Phone: @contact.GetPhone()</h4>
-            </div>
-            <p>Other notes: @contact.GetNotes()</p>
+      <div class = "well">
+      <em><h3>Address</h3></em>
+      <h4>@contact.GetAddress().GetStreet()</h4>
+      <h4>@contact.GetAddress().GetCity() @contact.GetAddress().GetState()</h4>
+      <em><h3>Phone</h3></em>
+      <h4>@contact.GetPhone()</h4>
+      </div>
+      <small class="text-muted">@contact.GetNotes()</small>
 
 
-
-        </div>
+      </div>
       </div>
 
     }
@@ -40,7 +41,7 @@
   @if(Model.Count>0)
   {
     <form action="/contacts/clear" method="post">
-      <button type="submit" name="button" class="btn btn-danger">Clear all contacts</button>
+    <button type="submit" name="button" class="btn btn-danger">Clear all contacts</button>
     </form>
   }
 

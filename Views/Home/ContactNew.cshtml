@@ -12,11 +12,14 @@
       <div class = "panel-body">
 
         <div class = "well">
+          <em><h3>Address</h3></em>
           <h4>@Model.GetAddress().GetStreet()</h4>
-          <h4>@Model.GetAddress().GetCity(), @Model.GetAddress().GetState()</h4>
-          <h4>Phone: @Model.GetPhone()</h4>
+          <h4>@Model.GetAddress().GetCity() @Model.GetAddress().GetState()</h4>
+          <em><h3>Phone</h3></em>
+          <h4>@Model.GetPhone()</h4>
         </div>
-        <p>Other notes: @Model.GetNotes()</p>
+          <small class="text-muted">@Model.GetNotes()</small>
+    
 
     </div>
   </div>
