@@ -11,10 +11,11 @@ namespace AddressBook.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      return View();
+      return View(Contact.GetAll());
     }
-    [HttpPost("/index")]
-    public ActionResult IndexPost()
+
+    [HttpPost("/contact/new")]
+    public ActionResult ContactNew()
     {
       string name = Request.Form["name"];
       string phone = Request.Form["phone"];
@@ -25,12 +26,19 @@ namespace AddressBook.Controllers
       Address newAddress = new Address(street,city,state);
       Contact newContact = new Contact(name,phone,newAddress,notes);
 
-      return View("Index",newContact.GetAll());
+      return View(newContact);
     }
+
     [HttpGet("/ContactForm")]
     public ActionResult ContactForm()
     {
       return View();
+    }
+
+    [HttpGet("/ContactDetails/{id}")]
+    public ActionResult ContactDetails(int id)
+    {
+      return View(Contact.Find(id));
     }
 
   }

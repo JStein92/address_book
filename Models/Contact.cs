@@ -10,7 +10,7 @@ namespace AddressBook.Models
     private string _notes;
     private Address _address;
     private int _id;
-    private static List<Contact> _allContacts = new List<Contact>();
+    private static List<Contact> _allContacts = new List<Contact>() {};
 
     public Contact(string name, string phone, Address address, string notes = "")
     {
@@ -42,11 +42,11 @@ namespace AddressBook.Models
     {
       return _id;
     }
-    public List<Contact> GetAll()
+    public static List<Contact> GetAll()
     {
       return _allContacts;
     }
-    public Contact Find(int searchId)
+    public static Contact Find(int searchId)
     {
       return _allContacts[searchId - 1];
     }

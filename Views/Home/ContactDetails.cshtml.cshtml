@@ -1,0 +1,48 @@
+@{
+  Layout = "_Layout";
+}
+
+
+<div class="container">
+  <div class="page-header">
+    <h1>Edit this contact <small><a href="/">Or go back to main page</a></small></h1>
+  </div>
+
+  <form action="/contact/new" method="post" class="form-horizontal">
+    <div class="form-group">
+      <label for="name">Enter contact name:</label>
+      <input type="text" name="name" id="name" value="@Model.GetName">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Enter contact phone:</label>
+      <input type="text" name="phone" id="phone">
+    </div>
+
+    <div class="form-group">
+      <label for="street">Enter street:</label>
+      <input type="text" name="street" id="street">
+    </div>
+
+    <div class="form-group">
+      <label for="city">Enter city:</label>
+      <input type="text" name="city" id="city">
+    </div>
+
+    <div class="form-group">
+      <label for="state">Enter state:</label>
+      <input type="text" name="state" id="state">
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Enter other notes (optional):</label>
+      <input type="text" name="notes" id="notes">
+    </div>
+
+    <div class="form-group">
+      <button type="submit" name="button">Create contact!</button>
+
+    </form>
+
+  </div>
+</div>

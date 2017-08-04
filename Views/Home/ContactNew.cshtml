@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="page-header">
+<h1>You created a new contact! <small><a href="/">View all contacts</a></small></h1>
+</div>
+<div class="container">
+
+
+
+  <div class = "panel panel-info">
+    <div class = "panel-heading"><h2><a href = "ContactDetails/@Model.GetId()"> @Model.GetName()</a></h2> (click to edit) </div>
+      <div class = "panel-body">
+
+        <div class = "well">
+          <h4>@Model.GetAddress().GetStreet()</h4>
+          <h4>@Model.GetAddress().GetCity(), @Model.GetAddress().GetState()</h4>
+          <h4>Phone: @Model.GetPhone()</h4>
+        </div>
+        <p>Other notes: @Model.GetNotes()</p>
+
+    </div>
+  </div>
+
+</div>
