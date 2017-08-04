@@ -13,6 +13,13 @@ namespace AddressBook.Controllers
       return View(Contact.GetAll());
     }
 
+    [HttpPost("/")]
+    public ActionResult IndexClearAll()
+    {
+      Contact.ClearAll();
+      return View("Index", Contact.GetAll());
+    }
+
     [HttpPost("/index")]
     public ActionResult IndexEditContact()
     {
@@ -24,7 +31,7 @@ namespace AddressBook.Controllers
       string notes = Request.Form["notes"];
 
       Address editedAddress = new Address(street,city,state);
-      Contact editedContact = new Contact(name,phone,editedAddress,notes,false);
+      Contact editedContact = new Contact(name,phone,editedAddress,false,notes);
 
       Console.WriteLine("Contact trying to edit is: " + name + " at position " + Request.Form["Id"]);
 
@@ -44,7 +51,7 @@ namespace AddressBook.Controllers
         string state = Request.Form["state"];
         string notes = Request.Form["notes"];
         Address newAddress = new Address(street,city,state);
-        Contact newContact = new Contact(name,phone,newAddress,notes,true);
+        Contact newContact = new Contact(name,phone,newAddress,true,notes);
         return View(newContact);
       }
 

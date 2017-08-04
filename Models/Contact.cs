@@ -13,7 +13,7 @@ namespace AddressBook.Models
     private int _id;
     private static List<Contact> _allContacts = new List<Contact>() {};
 
-    public Contact(string name, string phone, Address address, string notes, bool newContact)
+    public Contact(string name, string phone, Address address, bool newContact, string notes = "")
     {
       _name = name;
       _phone = phone;
@@ -61,6 +61,10 @@ namespace AddressBook.Models
     public static List<Contact> GetAll()
     {
       return _allContacts;
+    }
+    public static void ClearAll()
+    {
+      _allContacts.Clear();
     }
     public static Contact Find(int searchId)
     {
